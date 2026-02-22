@@ -1,0 +1,38 @@
+[project]
+name = "filetypetrans"
+version = "0.1.0"
+description = "文件格式转换工具"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # 文档转换
+    "python-docx>=0.8.11",
+    "PyPDF2>=3.0.0",
+    "pandas>=2.0.0",
+    "openpyxl>=3.1.0",
+    "python-pptx>=0.6.21",
+    "xlrd>=2.0.1",
+    "python-magic>=0.4.27",
+    # 工具库
+    "tqdm>=4.64.0",
+    "click>=8.1.0",
+    "rich>=13.4.0",
+    "pathspec>=0.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+]
+
+[project.scripts]
+filetrans = "src.main:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.15.1",
+]
