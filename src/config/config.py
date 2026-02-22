@@ -5,7 +5,7 @@ from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Set
 
-from src.config.constants import (
+from config.constants import (
     ALL_SUPPORTED_EXTENSIONS,
     EXCLUDED_DIRECTORIES,
     DEFAULT_DOWNLOAD_DIR,

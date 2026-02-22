@@ -4,7 +4,7 @@
 from pathlib import Path
 from typing import Generator, Set
 
-from src.config.config import Config
+from config.config import Config
 
 
 class DirectoryTraversal:

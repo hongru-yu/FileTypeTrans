@@ -4,11 +4,11 @@
 from pathlib import Path
 from typing import Dict, Optional
 
-from src.config.config import Config
-from src.core.traversal import DirectoryTraversal
-from src.core.converter import get_converter
-from src.core.file_handler import FileHandler
-from src.ui.progress import ProgressTracker
+from config.config import Config
+from core.traversal import DirectoryTraversal
+from core.converter import get_converter
+from core.file_handler import FileHandler
+from ui.progress import ProgressTracker
 
 
 class FileTypeTransApp:
