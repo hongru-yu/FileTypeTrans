@@ -11,6 +11,7 @@
 - ✅ **智能过滤**: 自动跳过图片、代码、配置等不支持的文件
 - ✅ **排除目录**: 自动排除 `.git`, `__pycache__`, `node_modules` 等目录
 - ✅ **错误处理**: 完善的错误处理和日志记录
+- ✅ **图形界面**: 提供友好的 GUI 界面，支持可视化操作
 
 ## 支持的文件格式
 
@@ -67,11 +68,24 @@ source .venv/bin/activate
 
 ## 使用方法
 
-### 基本使用
+### GUI 模式（推荐）
 
 ```bash
-# 转换当前目录
-uv run python src/main.py
+# 启动图形界面
+uv run python main.py --gui
+```
+
+GUI 功能特性：
+- 图形化选择源文件夹和目标文件夹
+- 实时显示转换进度
+- 转换完成后显示详细统计
+- 支持直接打开目标文件夹
+
+### 基本使用
+
+```模式
+# 转换当前目录（CLI 模式）
+uv run python main.py
 ```
 
 ### 高级使用
@@ -147,7 +161,12 @@ FileTypeTrans/
 │   │       └── pptx_converter.py  # PPT 转换器
 │   ├── ui/
 │   │   ├── cli.py               # 命令行界面
-│   │   └── progress.py          # 进度显示
+│   │   ├── progress.py          # 进度显示
+│   │   └── gui/               # 图形用户界面
+│   │       ├── main_window.py   # 主窗口
+│   │       ├── worker.py         # 后台工作线程
+│   │       ├── progress_dialog.py # 进度对话框
+│   │       └── result_dialog.py  # 结果对话框
 │   └── utils/
 │       ├── logger.py            # 日志记录
 │       └── exceptions.py        # 异常处理
@@ -166,7 +185,12 @@ FileTypeTrans/
 │   ├── test_cli.py
 │   ├── test_main.py
 │   ├── test_logger.py
-│   └── test_exceptions.py
+│   ├── test_exceptions.py
+│   └── test_gui/              # GUI 模块测试
+│       ├── test_main_window.py
+│       ├── test_worker.py
+│       ├── test_progress_dialog.py
+│       └── test_result_dialog.py
 ├── pyproject.toml
 ├── README.md
 ├── CLAUDE.md
@@ -197,6 +221,8 @@ FileTypeTrans/
 | xlrd | >= 2.0.1 | 旧版 Excel 读取 |
 | tqdm | >= 4.64.0 | 进度条显示 |
 | pytest | >= 9.0.2 | 测试框架 |
+| PyQt5 | >= 5.15.9 | 图形用户界面 |
+| pytest-qt | >= 4.2.0 | GUI 测试框架 |
 
 ## 许可证
 

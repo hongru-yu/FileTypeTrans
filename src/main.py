@@ -4,25 +4,26 @@
 from pathlib import Path
 from typing import Dict, Optional
 
-from config.config import Config
-from core.traversal import DirectoryTraversal
-from core.converter import get_converter
-from core.file_handler import FileHandler
-from ui.progress import ProgressTracker
+from src.config.config import Config
+from src.core.traversal import DirectoryTraversal
+from src.core.converter import get_converter
+from src.core.file_handler import FileHandler
+from src.ui.progress import ProgressTracker
 
 
 class FileTypeTransApp:
     """文件类型转换应用类"""
 
-    def __init__(self, source_dir: Path):
+    def __init__(self, source_dir: Path, target_dir: Optional[Path] = None):
         """
         初始化应用
 
         Args:
             source_dir: 源目录路径
+            target_dir: 目标目录路径（可选）
         """
         self.source_dir = source_dir
-        self.target_dir: Optional[Path] = None
+        self.target_dir: Optional[Path] = target_dir
         self.config = Config()
         self.file_handler = FileHandler()
         self.traversal = DirectoryTraversal(source_dir, self.config)

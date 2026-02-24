@@ -4,8 +4,8 @@
 from pathlib import Path
 from typing import Set
 
-from core.file_handler import FileHandler
-from config.constants import SUPPORTED_TEXT_EXTENSIONS
+from src.core.file_handler import FileHandler
+from src.config.constants import SUPPORTED_TEXT_EXTENSIONS
 
 
 class TextConverter:
