@@ -48,9 +48,10 @@ class DocxConverter:
         markdown.append("---\n")
 
         # 提取所有段落文本
+        # 使用 text 属性，它会自动包含所有 runs 的内容
         for paragraph in doc.paragraphs:
-            text = paragraph.text.strip()
-            if text:  # 只添加非空段落
-                markdown.append(text)
+            paragraph_text = paragraph.text.strip()
+            if paragraph_text:  # 只添加非空段落
+                markdown.append(paragraph_text)
 
         return "\n".join(markdown)
