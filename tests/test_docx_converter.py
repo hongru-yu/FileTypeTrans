@@ -3,7 +3,7 @@ Word转换器模块的单元测试
 """
 import pytest
 from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 from src.core.converters.docx_converter import DocxConverter
 
 
@@ -50,6 +50,7 @@ class TestDocxConverter:
         mock_para3.text = "这是第二段内容。"
 
         mock_doc.paragraphs = [mock_para1, mock_para2, mock_para3]
+        mock_doc.tables = []  # 添加空表格列表
 
         # 创建测试文件路径
         test_file = Path("/tmp/test.docx")
@@ -64,7 +65,7 @@ class TestDocxConverter:
         assert "这是第二段内容。" in markdown
 
         # 验证 Document 被正确调用
-        mock_document_class.assert_called_once_with(test_file)
+        mock_document_class.assert_called_once_with(str(test_file))
 
     @patch('src.core.converters.docx_converter.Document')
     def test_convert_empty_document(self, mock_document_class):
@@ -72,6 +73,7 @@ class TestDocxConverter:
         mock_doc = Mock()
         mock_document_class.return_value = mock_doc
         mock_doc.paragraphs = []
+        mock_doc.tables = []
 
         test_file = Path("/tmp/empty.docx")
 
@@ -94,6 +96,7 @@ class TestDocxConverter:
         mock_para3.text = "第三段"
 
         mock_doc.paragraphs = [mock_para1, mock_para2, mock_para3]
+        mock_doc.tables = []
 
         test_file = Path("/tmp/mixed.docx")
 
@@ -112,6 +115,7 @@ class TestDocxConverter:
         mock_para = Mock()
         mock_para.text = "中文：你好\n数字：123\n符号：@#$%"
         mock_doc.paragraphs = [mock_para]
+        mock_doc.tables = []
 
         test_file = Path("/tmp/special.docx")
 
@@ -134,6 +138,7 @@ class TestDocxConverter:
         mock_para2.text = "另一个段落"
 
         mock_doc.paragraphs = [mock_para1, mock_para2]
+        mock_doc.tables = []
 
         test_file = Path("/tmp/multiline.docx")
 
@@ -159,6 +164,7 @@ class TestDocxConverter:
             paragraphs.append(mock_para)
 
         mock_doc.paragraphs = paragraphs
+        mock_doc.tables = []
 
         test_file = Path("/tmp/large.docx")
 
