@@ -20,7 +20,7 @@
 | 文件类型 | 扩展名 |
 |----------|--------|
 | 文本文件 | `.txt`, `.md`, `.rst`, `.adoc` |
-| Word 文档 | `.docx`, `.doc` |
+| Word 文档 | `.docx`, `.doc`<br><small>*macOS 上自动使用 textutil 转换 .doc 为 .docx*</small> |
 | Excel 表格 | `.xlsx`, `.xls`, `.csv` |
 | PowerPoint | `.pptx`, `.ppt` |
 | PDF 文档 | `.pdf` |
@@ -248,4 +248,4 @@ FileTypeTrans/
 ---
 
 **当前版本**: 0.1.0
-**最后更新**: 2026-02-22
+**最后更新**: 2026-02-25
