@@ -40,7 +40,7 @@ class DocxConverter:
             Markdown内容
         """
         # 读取Word文档
-        doc = Document(file_path)
+        doc = Document(str(file_path))
 
         # 构建Markdown内容
         markdown = []
@@ -53,5 +53,14 @@ class DocxConverter:
             paragraph_text = paragraph.text.strip()
             if paragraph_text:  # 只添加非空段落
                 markdown.append(paragraph_text)
+
+        # 提取所有表格内容
+        for table in doc.tables:
+            if table.rows:
+                markdown.append("\n## 表格\n")
+                for row in table.rows:
+                    row_text = " | ".join(cell.text.strip() for cell in row.cells)
+                    if row_text.strip():
+                        markdown.append(f"- {row_text}")
 
         return "\n".join(markdown)
